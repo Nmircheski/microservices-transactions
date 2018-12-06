@@ -1,0 +1,25 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name: zuul-api-gateway
+eureka:
+  client:
+    service-url:
+      default-Zone: http://localhost:8761/eureka/
+
+
+zuul:
+  routes:
+    uaa:
+      sensitive-headers:
+      path: /uaa/**
+      url: http://localhost:9001/uaa
+  add-proxy-headers: true
+
+
+security:
+  oauth2:
+    resource:
+      user-info-uri: http://localhost:8200/uaa/user
