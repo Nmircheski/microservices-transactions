@@ -1,4 +1,5 @@
-package com.microservices.goji.zuulapigateway;
+package com.microservices.transactions.zuulapigateway;
+
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

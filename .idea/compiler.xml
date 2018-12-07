@@ -8,7 +8,6 @@
         <outputRelativeToContentRoot value="true" />
         <module name="auth-service" />
         <module name="eureka-service" />
-        <module name="microservices-transactions" />
         <module name="zuul-api-gateway" />
       </profile>
     </annotationProcessing>
