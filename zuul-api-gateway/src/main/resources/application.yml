@@ -16,11 +16,11 @@ zuul:
       sensitive-headers:
       path: /uaa/**
       serviceId: auth-service
-      stripPrefix: false
   add-proxy-headers: true
+  prefix: /api
 
 
 security:
   oauth2:
     resource:
-      user-info-uri: http://localhost:9100/uaa/user
+      user-info-uri: http://localhost:9001/username
