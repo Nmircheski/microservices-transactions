@@ -4,6 +4,8 @@ server:
 spring:
   application:
     name: zuul-api-gateway
+  profiles:
+    active: dev
 eureka:
   client:
     service-url:
@@ -18,9 +20,7 @@ zuul:
       serviceId: auth-service
   add-proxy-headers: true
   prefix: /api
-
-
 security:
   oauth2:
     resource:
-      user-info-uri: http://localhost:9001/username
+      user-info-uri: http://localhost:9001/users/me

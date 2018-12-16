@@ -1,0 +1,8 @@
+GET http://localhost:9001/{POST%20/user/register}
+
+###
+
+GET http://localhost:9001/{POST%20/user/register}
+
+###
+

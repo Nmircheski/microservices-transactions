@@ -1,10 +1,13 @@
 package com.microservices.transactions.authservice.model;
 
+import org.codehaus.jackson.annotate.JsonBackReference;
+
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.Collection;
 
 @Entity
-public class Permission {
+public class Permission implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -13,6 +16,7 @@ public class Permission {
 
     private String name;
     @ManyToMany(mappedBy = "permissions")
+    @JsonBackReference
     private Collection<Role> roles;
 
     public Long getId() {

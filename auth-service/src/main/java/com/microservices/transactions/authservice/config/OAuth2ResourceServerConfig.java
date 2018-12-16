@@ -20,9 +20,10 @@ public class OAuth2ResourceServerConfig extends ResourceServerConfigurerAdapter 
     @Override
     public void configure(HttpSecurity http) throws Exception {
         http.csrf().disable()
-                .authorizeRequests().antMatchers("/oauth/token").permitAll()
-                .anyRequest().authenticated();
-        http.httpBasic();
+                .authorizeRequests().antMatchers("/oauth/token","/users").permitAll()
+                .anyRequest().authenticated()
+                .and()
+                .httpBasic();
     }
 
     @Override

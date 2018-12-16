@@ -1,6 +1,10 @@
 package com.microservices.transactions.authservice.model;
 
+import org.codehaus.jackson.annotate.JsonBackReference;
+import org.codehaus.jackson.annotate.JsonManagedReference;
+
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.Collection;
 import java.util.List;
 
@@ -8,7 +12,7 @@ import java.util.List;
  * Created by nikola on 10/17/18.
  */
 @Entity
-public class Role {
+public class Role implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -20,6 +24,7 @@ public class Role {
             name = "users_roles",
             joinColumns = @JoinColumn(name = "role_id"),
             inverseJoinColumns = @JoinColumn(name = "user_id"))
+    @JsonBackReference
     private List<User> users;
 
     @ManyToMany
@@ -29,6 +34,7 @@ public class Role {
                     name = "role_id"),
             inverseJoinColumns = @JoinColumn(
                     name = "permission_id"))
+    @JsonManagedReference
     private Collection<Permission> permissions;
 
     private String name;
