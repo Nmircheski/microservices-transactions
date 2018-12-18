@@ -29,7 +29,8 @@ public class UserController {
     @GetMapping("/hi")
     public String hi() {return "HI";}
 
-    @RequestMapping(value = "/users",method = RequestMethod.POST)
+
+    @RequestMapping(value = "/users/register",method = RequestMethod.POST)
     public User userRegistration(@RequestBody User user)
     {
             userService.save(user);

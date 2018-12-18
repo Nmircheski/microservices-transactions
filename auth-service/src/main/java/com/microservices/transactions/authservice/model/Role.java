@@ -1,7 +1,6 @@
 package com.microservices.transactions.authservice.model;
 
-import org.codehaus.jackson.annotate.JsonBackReference;
-import org.codehaus.jackson.annotate.JsonManagedReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -19,12 +18,8 @@ public class Role implements Serializable {
     @Column(name = "role_id",nullable = false)
     private Long id;
 
-    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-    @JoinTable(
-            name = "users_roles",
-            joinColumns = @JoinColumn(name = "role_id"),
-            inverseJoinColumns = @JoinColumn(name = "user_id"))
-    @JsonBackReference
+    @ManyToMany(mappedBy = "roles")
+    @JsonIgnore
     private List<User> users;
 
     @ManyToMany
@@ -34,7 +29,7 @@ public class Role implements Serializable {
                     name = "role_id"),
             inverseJoinColumns = @JoinColumn(
                     name = "permission_id"))
-    @JsonManagedReference
+    @JsonIgnore
     private Collection<Permission> permissions;
 
     private String name;

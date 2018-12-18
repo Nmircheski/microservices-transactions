@@ -15,12 +15,10 @@ public class OAuth2ResourceServerConfig extends ResourceServerConfigurerAdapter 
     @Autowired
     private TokenStore tokenStore;
 
-
-
     @Override
     public void configure(HttpSecurity http) throws Exception {
         http.csrf().disable()
-                .authorizeRequests().antMatchers("/oauth/token","/users").permitAll()
+                .authorizeRequests().antMatchers("/oauth/token","/users/register").permitAll()
                 .anyRequest().authenticated()
                 .and()
                 .httpBasic();

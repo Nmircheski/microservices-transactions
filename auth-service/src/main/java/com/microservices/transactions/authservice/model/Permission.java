@@ -1,6 +1,6 @@
 package com.microservices.transactions.authservice.model;
 
-import org.codehaus.jackson.annotate.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -16,7 +16,7 @@ public class Permission implements Serializable {
 
     private String name;
     @ManyToMany(mappedBy = "permissions")
-    @JsonBackReference
+    @JsonIgnore
     private Collection<Role> roles;
 
     public Long getId() {
